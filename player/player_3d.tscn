@@ -35,7 +35,7 @@ scale_curve = SubResource("CurveTexture_8asvs")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpdwg"]
 shading_mode = 2
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.885019, 0.942187, 0.889315, 1)
+albedo_color = Color(0.536729, 0.511356, 0.854902, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_vpbss"]
 material = SubResource("StandardMaterial3D_kpdwg")

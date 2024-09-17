@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dt6pe66bt6rwr"]
+
+[ext_resource type="PackedScene" uid="uid://5au21ucakuvw" path="res://level/cactus/cactus_small_1.tscn" id="1_vnlep"]
+[ext_resource type="PackedScene" uid="uid://cip1awte2184j" path="res://level/cactus/cactus_small_2.tscn" id="2_ekyc3"]
+[ext_resource type="PackedScene" uid="uid://c5hogid8crh2g" path="res://level/cactus/cactus_small_3.tscn" id="3_4r2mi"]
+[ext_resource type="PackedScene" uid="uid://7s1esfbldf1" path="res://level/cactus/cactus_small_4.tscn" id="4_lm5r6"]
+[ext_resource type="PackedScene" uid="uid://ddn8ddua3gdpq" path="res://level/cactus/cactus_small_5.tscn" id="5_xl1cj"]
+
+[node name="Cactus_Small_Clump" type="Node3D"]
+
+[node name="Cactus_Small_1" parent="." instance=ExtResource("1_vnlep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163612, 1.19209e-07, 0.0788603)
+
+[node name="Cactus_Small_2" parent="." instance=ExtResource("2_ekyc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105848, 1.19209e-07, -0.335738)
+
+[node name="Cactus_Small_3" parent="." instance=ExtResource("3_4r2mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.246304, 1.19209e-07, 0.0142213)
+
+[node name="Cactus_Small_4" parent="." instance=ExtResource("4_lm5r6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39515, 5.96046e-08, -0.30357)
+
+[node name="Cactus_Small_5" parent="." instance=ExtResource("5_xl1cj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625786, 5.96046e-08, 0.561976)
