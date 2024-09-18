@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=3 uid="uid://bvt4747kc5u2t"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_1il7v"]
+[ext_resource type="PackedScene" uid="uid://b1ot6gn6tms6h" path="res://player/player_3d_extras.tscn" id="1_w0p8v"]
+[ext_resource type="Shader" uid="uid://cdlt3ujrpad32" path="res://level/sky_with_stars.tres" id="2_vppo7"]
+[ext_resource type="PackedScene" uid="uid://cnedxfn2pxh2t" path="res://level/level.tscn" id="7_2frud"]
+[ext_resource type="Texture2D" uid="uid://ca3jtautvrj1u" path="res://level/moon.png" id="12_ri1bf"]
+[ext_resource type="PackedScene" uid="uid://bij84ol81kcts" path="res://level/interactable/kill_plane/kill_plane_3d.tscn" id="18_psymw"]
+[ext_resource type="PackedScene" uid="uid://bxg6oejpaitdt" path="res://level/interactable/flag/flag_reached_screen.tscn" id="19_cpgj4"]
+
+[sub_resource type="Curve" id="Curve_vfy0b"]
+_data = [Vector2(0.331719, 0.0391753), 0.0, 0.0, 0, 0, Vector2(0.697336, 1), 0.51276, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_moxc7"]
+curve = SubResource("Curve_vfy0b")
+
+[sub_resource type="Gradient" id="Gradient_1s0jq"]
+offsets = PackedFloat32Array(0.784123, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d1ecl"]
+frequency = 0.3589
+fractal_octaves = 4
+cellular_distance_function = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_83fre"]
+width = 1024
+height = 1024
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_1s0jq")
+noise = SubResource("FastNoiseLite_d1ecl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6vx4"]
+shader = ExtResource("2_vppo7")
+shader_parameter/top_color = Color(0.288469, 0.182916, 1, 1)
+shader_parameter/bottom_color = Color(1, 0.46805, 0, 1)
+shader_parameter/moon_direction = Vector3(-1.095, 0.68, 1)
+shader_parameter/moon_size = 0.045
+shader_parameter/gradient_curve = SubResource("CurveTexture_moxc7")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_83fre")
+shader_parameter/moon_texture = ExtResource("12_ri1bf")
+
+[sub_resource type="Sky" id="Sky_0h0bb"]
+sky_material = SubResource("ShaderMaterial_r6vx4")
+
+[sub_resource type="Environment" id="Environment_mm38n"]
+background_mode = 2
+sky = SubResource("Sky_0h0bb")
+ambient_light_source = 3
+ambient_light_color = Color(0.74902, 0.742654, 0.615273, 1)
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+glow_intensity = 4.98
+glow_strength = 0.26
+glow_bloom = 0.08
+glow_blend_mode = 0
+glow_hdr_threshold = 0.26
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 18.75
+glow_map_strength = 1.0
+fog_light_color = Color(0.843137, 0.737255, 0.329412, 1)
+fog_density = 0.0
+fog_aerial_perspective = 1.0
+fog_sky_affect = 0.0
+fog_height_density = 0.1
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.843137, 0.737255, 0.329412, 1)
+volumetric_fog_emission = Color(0.843137, 0.737255, 0.329412, 1)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_1il7v")
+
+[node name="Player3D" parent="." instance=ExtResource("1_w0p8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43638, 0, -39.2513)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mm38n")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.226294, 0.780723, -0.582463, 0.688764, 0.294578, 0.662441, 0.688764, -0.551086, -0.471072, 0, 16.8832, -11.3427)
+light_energy = 0.53
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="KillPlane" parent="." instance=ExtResource("18_psymw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.22359, 0)
+metadata/_edit_lock_ = true
+
+[node name="FlagReachedScreen" parent="." instance=ExtResource("19_cpgj4")]
+
+[node name="Level" parent="." instance=ExtResource("7_2frud")]

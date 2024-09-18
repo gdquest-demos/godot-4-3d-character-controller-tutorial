@@ -1,4 +1,4 @@
-class_name Player3D extends CharacterBody3D
+extends CharacterBody3D
 
 @export_group("Movement")
 ## Character maximum run speed on the ground in meters per second.
@@ -37,9 +37,6 @@ var _camera_input_direction := Vector2.ZERO
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
 @onready var _skin: SophiaSkin = %SophiaSkin
-# TODO: simplify/remove
-@onready var _skin_pivot: Node3D = %SkinPivot
-@onready var _ground_shapecast: ShapeCast3D = %GroundShapeCast
 @onready var _landing_sound: AudioStreamPlayer3D = %LandingSound
 @onready var _jump_sound: AudioStreamPlayer3D = %JumpSound
 @onready var _dust_particles: GPUParticles3D = %DustParticles
@@ -59,6 +56,13 @@ func _ready() -> void:
 	)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif event.is_action_pressed("left_click"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	var player_is_using_mouse := (
 		event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
@@ -69,16 +73,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# Detect the ground below the player and store its height. The camera uses this
-	# to avoid clipping through the ground or moving up and down while the player jumps.
-	if _ground_shapecast.get_collision_count() > 0:
-		for collision_result in _ground_shapecast.collision_result:
-			ground_height = max(ground_height, collision_result.point.y)
-	else:
-		ground_height = global_position.y + _ground_shapecast.target_position.y
-	if global_position.y < ground_height:
-		ground_height = global_position.y
-
 	# Calculate movement input and align it to the camera's direction.
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.4)
 	# Should be projected onto the ground plane.
@@ -94,7 +88,7 @@ func _physics_process(delta: float) -> void:
 	if move_direction.length() > 0.2:
 		_last_input_direction = move_direction.normalized()
 	var target_angle := Vector3.BACK.signed_angle_to(_last_input_direction, Vector3.UP)
-	_skin_pivot.global_rotation.y = lerp_angle(_skin_pivot.rotation.y, target_angle, rotation_speed * delta)
+	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
 
 	# We separate out the y velocity to only interpolate the velocity in the
 	# ground plane, and not affect the gravity.

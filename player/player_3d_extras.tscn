@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://ciqrpd5675boy"]
+[gd_scene load_steps=12 format=3 uid="uid://b1ot6gn6tms6h"]
 
-[ext_resource type="Script" path="res://player/player_3d.gd" id="1_rvo1c"]
-[ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://player/sophia_skin/sophia_skin.tscn" id="2_bjfrt"]
-[ext_resource type="AudioStream" uid="uid://bhoyegbjust84" path="res://player/sounds/robot_land.wav" id="4_8qkn4"]
-[ext_resource type="AudioStream" uid="uid://b4x0f4pgfifoo" path="res://player/sounds/robot_jump.wav" id="5_b5l5h"]
+[ext_resource type="Script" path="res://player/player_3d_extras.gd" id="1_dpokc"]
+[ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://player/sophia_skin/sophia_skin.tscn" id="2_4dj54"]
+[ext_resource type="AudioStream" uid="uid://bhoyegbjust84" path="res://player/sounds/robot_land.wav" id="3_kbqxf"]
+[ext_resource type="AudioStream" uid="uid://b4x0f4pgfifoo" path="res://player/sounds/robot_jump.wav" id="4_1v0dq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2xm"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5n07"]
 
 [sub_resource type="Curve" id="Curve_3f17x"]
 _data = [Vector2(0, 0.742241), 0.0, 0.0, 0, 0, Vector2(0.139952, 0.986755), 0.129787, 0.129787, 0, 0, Vector2(0.631579, 1), 0.0, 0.0, 0, 0, Vector2(0.785885, 0.873668), -1.98736, -1.98736, 0, 0, Vector2(1, 0.0148119), -5.26067, 0.0, 0, 0]
@@ -53,29 +51,17 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 floor_constant_speed = true
-script = ExtResource("1_rvo1c")
+script = ExtResource("1_dpokc")
 acceleration = 30.0
 
 [node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_8x2xm")
 
-[node name="GroundShapeCast" type="ShapeCast3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CylinderShape3D_s5n07")
-target_position = Vector3(0, -2.6, 0)
-margin = 0.5
-max_results = 1
-debug_shape_custom_color = Color(0.658824, 1, 0, 1)
-
-[node name="SkinPivot" type="Node3D" parent="."]
+[node name="SophiaSkin" parent="." instance=ExtResource("2_4dj54")]
 unique_name_in_owner = true
 
-[node name="SophiaSkin" parent="SkinPivot" instance=ExtResource("2_bjfrt")]
-unique_name_in_owner = true
-
-[node name="DustParticles" type="GPUParticles3D" parent="SkinPivot/SophiaSkin"]
+[node name="DustParticles" type="GPUParticles3D" parent="SophiaSkin"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136607, -0.190934)
 cast_shadow = 0
@@ -88,12 +74,12 @@ draw_pass_1 = SubResource("SphereMesh_vpbss")
 
 [node name="LandingSound" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("4_8qkn4")
+stream = ExtResource("3_kbqxf")
 volume_db = 1.0
 
 [node name="JumpSound" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("5_b5l5h")
+stream = ExtResource("4_1v0dq")
 volume_db = 1.0
 
 [node name="CameraPivot" type="Node3D" parent="."]
