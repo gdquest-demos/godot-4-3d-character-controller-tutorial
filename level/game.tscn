@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://bvt4747kc5u2t"]
 
 [ext_resource type="Script" path="res://level/game.gd" id="1_1il7v"]
-[ext_resource type="Shader" uid="uid://cdlt3ujrpad32" path="res://sky_with_stars.tres" id="2_vppo7"]
+[ext_resource type="Shader" uid="uid://cdlt3ujrpad32" path="res://level/sky_with_stars.tres" id="2_vppo7"]
 [ext_resource type="PackedScene" uid="uid://ciqrpd5675boy" path="res://player/player_3d.tscn" id="4_i8755"]
 [ext_resource type="PackedScene" uid="uid://c6uew1wfpkt16" path="res://level/interactable/flag/flag_3d.tscn" id="7_l2nua"]
 [ext_resource type="Material" uid="uid://da188d7yrcfr8" path="res://level/platforms.tres" id="8_2hueg"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dt6pe66bt6rwr" path="res://level/cactus/Cactus_Small_Clump.tscn" id="9_ce7bg"]
 [ext_resource type="PackedScene" uid="uid://3agu7gb3kjif" path="res://level/cactus/cactus_tall_3.tscn" id="10_aa482"]
 [ext_resource type="PackedScene" uid="uid://c1d37gy1pj85v" path="res://level/cactus/cactus_tall_5.tscn" id="11_3xa7d"]
-[ext_resource type="Texture2D" uid="uid://ca3jtautvrj1u" path="res://moon.png" id="12_ri1bf"]
+[ext_resource type="Texture2D" uid="uid://ca3jtautvrj1u" path="res://level/moon.png" id="12_ri1bf"]
 [ext_resource type="PackedScene" uid="uid://c5hogid8crh2g" path="res://level/cactus/cactus_small_3.tscn" id="13_43ado"]
 [ext_resource type="PackedScene" uid="uid://cip1awte2184j" path="res://level/cactus/cactus_small_2.tscn" id="14_m7c0v"]
 [ext_resource type="PackedScene" uid="uid://bij84ol81kcts" path="res://level/interactable/kill_plane/kill_plane_3d.tscn" id="18_psymw"]

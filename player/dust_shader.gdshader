@@ -6,7 +6,7 @@ uniform sampler2D voronoi_sampler : filter_linear_mipmap, repeat_enable;
 varying vec4 custom;
 
 void vertex() {
-	
+
 	mat4 mat_world = mat4(normalize(INV_VIEW_MATRIX[0]), normalize(INV_VIEW_MATRIX[1]) ,normalize(INV_VIEW_MATRIX[2]), MODEL_MATRIX[3]);
 	mat_world = mat_world * mat4(vec4(cos(INSTANCE_CUSTOM.x), -sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(0.0, 0.0, 1.0, 0.0), vec4(0.0, 0.0, 0.0, 1.0));
 	MODELVIEW_MATRIX = VIEW_MATRIX * mat_world;

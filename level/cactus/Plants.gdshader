@@ -18,5 +18,5 @@ void fragment(){
 	ALPHA = texture(grass_texture, UV).a;
 	NORMAL_MAP = texture(normap,UV).rgb;
 	ALPHA_SCISSOR_THRESHOLD = alpha_scissor;
-	
+
 }
