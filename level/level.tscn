@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnedxfn2pxh2t"]
+[gd_scene load_steps=20 format=3 uid="uid://cnedxfn2pxh2t"]
 
+[ext_resource type="Shader" uid="uid://cdlt3ujrpad32" path="res://level/sky_with_stars.tres" id="1_hwp5q"]
 [ext_resource type="PackedScene" uid="uid://7s1esfbldf1" path="res://level/cactus/cactus_small_4.tscn" id="1_oaaa3"]
 [ext_resource type="PackedScene" uid="uid://dt6pe66bt6rwr" path="res://level/cactus/Cactus_Small_Clump.tscn" id="2_ba0nm"]
+[ext_resource type="Texture2D" uid="uid://ca3jtautvrj1u" path="res://level/moon.png" id="2_kb37w"]
+[ext_resource type="PackedScene" uid="uid://bij84ol81kcts" path="res://level/interactable/kill_plane/kill_plane_3d.tscn" id="3_1g472"]
 [ext_resource type="PackedScene" uid="uid://3agu7gb3kjif" path="res://level/cactus/cactus_tall_3.tscn" id="3_b7ara"]
 [ext_resource type="PackedScene" uid="uid://c1d37gy1pj85v" path="res://level/cactus/cactus_tall_5.tscn" id="4_ej5ku"]
 [ext_resource type="PackedScene" uid="uid://c5hogid8crh2g" path="res://level/cactus/cactus_small_3.tscn" id="5_ka65c"]
@@ -9,7 +12,86 @@
 [ext_resource type="Material" uid="uid://da188d7yrcfr8" path="res://level/platforms.tres" id="7_njuj4"]
 [ext_resource type="PackedScene" uid="uid://c6uew1wfpkt16" path="res://level/interactable/flag/flag_3d.tscn" id="8_kebk2"]
 
+[sub_resource type="Curve" id="Curve_k4wis"]
+_data = [Vector2(0.331719, 0.0391753), 0.0, 0.0, 0, 0, Vector2(0.697336, 1), 0.51276, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_moxc7"]
+curve = SubResource("Curve_k4wis")
+
+[sub_resource type="Gradient" id="Gradient_4p0vt"]
+offsets = PackedFloat32Array(0.784123, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jnnrx"]
+frequency = 0.3589
+fractal_octaves = 4
+cellular_distance_function = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_83fre"]
+width = 1024
+height = 1024
+generate_mipmaps = false
+seamless = true
+color_ramp = SubResource("Gradient_4p0vt")
+noise = SubResource("FastNoiseLite_jnnrx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8ud2"]
+shader = ExtResource("1_hwp5q")
+shader_parameter/top_color = Color(0.288469, 0.182916, 1, 1)
+shader_parameter/bottom_color = Color(1, 0.46805, 0, 1)
+shader_parameter/moon_direction = Vector3(-1.095, 0.68, 1)
+shader_parameter/moon_size = 0.045
+shader_parameter/gradient_curve = SubResource("CurveTexture_moxc7")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_83fre")
+shader_parameter/moon_texture = ExtResource("2_kb37w")
+
+[sub_resource type="Sky" id="Sky_0h0bb"]
+sky_material = SubResource("ShaderMaterial_g8ud2")
+
+[sub_resource type="Environment" id="Environment_5pwhg"]
+background_mode = 2
+sky = SubResource("Sky_0h0bb")
+ambient_light_source = 3
+ambient_light_color = Color(0.74902, 0.742654, 0.615273, 1)
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+tonemap_exposure = 1.05
+tonemap_white = 0.95
+ssao_enabled = true
+ssao_radius = 2.0
+ssao_intensity = 1.4
+glow_intensity = 4.98
+glow_strength = 0.26
+glow_bloom = 0.08
+glow_blend_mode = 0
+glow_hdr_threshold = 0.26
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 18.75
+glow_map_strength = 1.0
+fog_light_color = Color(0.843137, 0.737255, 0.329412, 1)
+fog_density = 0.0
+fog_aerial_perspective = 1.0
+fog_sky_affect = 0.0
+fog_height_density = 0.1
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0.843137, 0.737255, 0.329412, 1)
+volumetric_fog_emission = Color(0.843137, 0.737255, 0.329412, 1)
+
 [node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5pwhg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.327016, 0.941731, -0.0787648, 0.688764, 0.294578, 0.662441, 0.647044, 0.162378, -0.744962, -47.2295, 26.8832, -28.0205)
+light_energy = 0.53
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="KillPlane" parent="." instance=ExtResource("3_1g472")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -55.25, 4.77641, -20)
+metadata/_edit_lock_ = true
 
 [node name="Cactus_Small_4" parent="." instance=ExtResource("1_oaaa3")]
 transform = Transform3D(1.97278, -0.330371, -0.0536778, 0.330812, 1.9734, 0.0124367, 0.0508846, -0.0211358, 2.00022, 3.5, 2.2809, -28)
