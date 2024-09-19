@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://bhoyegbjust84" path="res://player/sounds/robot_land.wav" id="3_kbqxf"]
 [ext_resource type="AudioStream" uid="uid://b4x0f4pgfifoo" path="res://player/sounds/robot_jump.wav" id="4_1v0dq"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2xm"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e8pdu"]
 
 [sub_resource type="Curve" id="Curve_3f17x"]
 _data = [Vector2(0, 0.742241), 0.0, 0.0, 0, 0, Vector2(0.139952, 0.986755), 0.129787, 0.129787, 0, 0, Vector2(0.631579, 1), 0.0, 0.0, 0, 0, Vector2(0.785885, 0.873668), -1.98736, -1.98736, 0, 0, Vector2(1, 0.0148119), -5.26067, 0.0, 0, 0]
@@ -55,8 +55,8 @@ script = ExtResource("1_dpokc")
 acceleration = 30.0
 
 [node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_8x2xm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_e8pdu")
 
 [node name="SophiaSkin" parent="." instance=ExtResource("2_4dj54")]
 unique_name_in_owner = true

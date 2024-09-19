@@ -4,7 +4,6 @@ extends CharacterBody3D
 @export var move_speed := 8.0
 @export var acceleration := 20.0
 @export var rotation_speed := 12.0
-@export var stopping_speed := 1.0
 @export var jump_impulse := 12.0
 
 @export_group("Camera")
@@ -54,9 +53,6 @@ func _physics_process(delta: float) -> void:
 	var y_velocity := velocity.y
 	velocity.y = 0.0
 	velocity = velocity.move_toward(move_direction * move_speed, acceleration * delta)
-	var ground_speed := velocity.length()
-	if move_direction.is_equal_approx(Vector3.ZERO) and ground_speed < stopping_speed:
-		velocity = Vector3.ZERO
 	velocity.y = y_velocity + _gravity * delta
 
 	var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
@@ -66,10 +62,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if move_direction.length() > 0.2:
-		_last_movement_direction = move_direction.normalized()
+		_last_movement_direction = move_direction
 	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
 	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
 
+	var ground_speed := velocity.length()
 	if is_starting_jump:
 		_skin.jump()
 	elif not is_on_floor() and velocity.y < 0:
