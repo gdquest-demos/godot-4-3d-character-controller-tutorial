@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6stugyrnrujv"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_kn07s"]
+[ext_resource type="PackedScene" uid="uid://dajcr60pwdgpr" path="res://lesson_reference/player_3d_010_camera.tscn" id="2_fun8n"]
+[ext_resource type="PackedScene" uid="uid://bxg6oejpaitdt" path="res://level/interactable/flag/flag_reached_screen.tscn" id="3_uc4bi"]
+[ext_resource type="PackedScene" uid="uid://cnedxfn2pxh2t" path="res://level/level.tscn" id="4_ts651"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_kn07s")
+
+[node name="Player3DCamera" parent="." instance=ExtResource("2_fun8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43638, 0, -39.2513)
+
+[node name="FlagReachedScreen" parent="." instance=ExtResource("3_uc4bi")]
+
+[node name="Level" parent="." instance=ExtResource("4_ts651")]
