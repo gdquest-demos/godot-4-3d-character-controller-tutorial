@@ -11,9 +11,9 @@ extends CharacterBody3D
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 8.0
 
-var _gravity := -30.0
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
+var _gravity := -30.0
 
 @onready var _camera_pivot: Node3D = %CameraPivot
 @onready var _camera: Camera3D = %Camera3D
@@ -66,12 +66,12 @@ func _physics_process(delta: float) -> void:
 	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
 	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
 
-	var ground_speed := velocity.length()
 	if is_starting_jump:
 		_skin.jump()
 	elif not is_on_floor() and velocity.y < 0:
 		_skin.fall()
 	elif is_on_floor():
+		var ground_speed := velocity.length()
 		if ground_speed > 0.0:
 			_skin.move()
 		else:
