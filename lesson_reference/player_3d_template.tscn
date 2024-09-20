@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b1ot6gn6tms6h"]
 
-[ext_resource type="Script" path="res://lesson_reference/player_3d_extras.gd" id="1_dpokc"]
+[ext_resource type="Script" path="res://lesson_reference/player_3d_template.gd" id="1_dpokc"]
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://player/sophia_skin/sophia_skin.tscn" id="2_4dj54"]
 [ext_resource type="AudioStream" uid="uid://bhoyegbjust84" path="res://player/sounds/robot_land.wav" id="3_kbqxf"]
 [ext_resource type="AudioStream" uid="uid://b4x0f4pgfifoo" path="res://player/sounds/robot_jump.wav" id="4_1v0dq"]
@@ -47,7 +47,7 @@ rings = 8
 length = 0.5
 slide_on_slope = true
 
-[node name="Player3D" type="CharacterBody3D"]
+[node name="Player3DTemplate" type="CharacterBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

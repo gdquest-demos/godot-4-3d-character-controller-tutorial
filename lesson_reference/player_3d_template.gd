@@ -25,7 +25,7 @@ extends CharacterBody3D
 var ground_height := 0.0
 
 var _gravity := -30.0
-var _was_on_floor_last_frame := false
+var _was_on_floor_last_frame := true
 var _camera_input_direction := Vector2.ZERO
 
 ## The last movement or aim direction input by the player. We use this to orient
