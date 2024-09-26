@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://5au21ucakuvw"]
 
-[ext_resource type="Material" uid="uid://g5x7g5rmse4o" path="res://level/cactus/Plants_2.material" id="1_ii7hd"]
-[ext_resource type="Material" uid="uid://3oxpnywrvsyc" path="res://level/cactus/Plants.material" id="2_gnemy"]
+[ext_resource type="Material" uid="uid://g5x7g5rmse4o" path="res://level/cactus/materials/cactus_body.material" id="1_ii7hd"]
+[ext_resource type="Material" uid="uid://3oxpnywrvsyc" path="res://level/cactus/materials/cactus_flowers.material" id="2_gnemy"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ngpeu"]
 _surfaces = [{

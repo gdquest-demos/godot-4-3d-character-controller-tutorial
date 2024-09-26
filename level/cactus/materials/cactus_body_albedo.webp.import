@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbng0n5o416sg"
-path.s3tc="res://.godot/imported/cactus_body_albedo.webp-9c4549445676c31e090921948f4dc8d2.s3tc.ctex"
+path.s3tc="res://.godot/imported/cactus_body_albedo.webp-39d76c463b156d9849492fbbf27ad0d1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://level/cactus/textures/cactus_body_albedo.webp"
-dest_files=["res://.godot/imported/cactus_body_albedo.webp-9c4549445676c31e090921948f4dc8d2.s3tc.ctex"]
+source_file="res://level/cactus/materials/cactus_body_albedo.webp"
+dest_files=["res://.godot/imported/cactus_body_albedo.webp-39d76c463b156d9849492fbbf27ad0d1.s3tc.ctex"]
 
 [params]
 
