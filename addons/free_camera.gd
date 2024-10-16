@@ -2,16 +2,17 @@ class_name FreelookCamera3D extends Camera3D
 
 @export var movement_speed := 10
 @export var mouse_sensitivity := 0.006
+@export var fov_change_speed := 50.0
 
 var _previous_camera: Camera3D
 var _camera_input_direction := Vector2.ZERO
-
+var _target_fov: float
 
 func _ready() -> void:
 	current = false
 	process_mode = PROCESS_MODE_ALWAYS
 	set_process(current)
-
+	_target_fov = fov
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_freelook_camera"):
@@ -25,6 +26,11 @@ func _input(event: InputEvent) -> void:
 		if is_camera_motion:
 			_camera_input_direction = event.relative * mouse_sensitivity
 
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				_target_fov = max(_target_fov - 1, 1)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				_target_fov = min(_target_fov + 1, 179)
 
 func _process(delta: float) -> void:
 	var movement := Vector3.ZERO
@@ -49,11 +55,13 @@ func _process(delta: float) -> void:
 
 	_camera_input_direction = Vector2.ZERO
 
+	fov = move_toward(fov, _target_fov, delta * fov_change_speed)
 
 func _toggle_camera_mode() -> void:
 	if not current:
 		_previous_camera = get_viewport().get_camera_3d()
 		fov = _previous_camera.fov
+		_target_fov = fov
 		global_transform = _previous_camera.global_transform
 		make_current()
 	else:
