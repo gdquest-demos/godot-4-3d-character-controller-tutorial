@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvt4747kc5u2t"]
+[gd_scene load_steps=6 format=3 uid="uid://bvt4747kc5u2t"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_1il7v"]
 [ext_resource type="PackedScene" uid="uid://b1ot6gn6tms6h" path="res://lesson_reference/player_3d_template.tscn" id="1_w0p8v"]
+[ext_resource type="Script" path="res://addons/free_camera.gd" id="5_5y4mc"]
 [ext_resource type="PackedScene" uid="uid://cnedxfn2pxh2t" path="res://level/level.tscn" id="7_2frud"]
 [ext_resource type="PackedScene" uid="uid://bxg6oejpaitdt" path="res://level/interactable/flag/flag_reached_screen.tscn" id="19_cpgj4"]
 
@@ -15,3 +16,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43638, 0, -7.8513)
 
 [node name="Level" parent="." instance=ExtResource("7_2frud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.4)
+
+[node name="FreelookCamera3D" type="Camera3D" parent="."]
+script = ExtResource("5_5y4mc")
