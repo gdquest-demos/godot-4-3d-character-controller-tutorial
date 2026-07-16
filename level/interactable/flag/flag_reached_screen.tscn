@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxg6oejpaitdt"]
+[gd_scene format=3 uid="uid://bxg6oejpaitdt"]
 
-[ext_resource type="Script" path="res://level/interactable/flag/flag_reached_screen.gd" id="1_oet4o"]
+[ext_resource type="Script" uid="uid://ds0awxypodlpb" path="res://level/interactable/flag/flag_reached_screen.gd" id="1_oet4o"]
 
 [sub_resource type="Animation" id="Animation_02w1v"]
 length = 0.001
@@ -59,15 +59,15 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tpu5p"]
 _data = {
-"RESET": SubResource("Animation_02w1v"),
-"fade_in": SubResource("Animation_51b0j")
+&"RESET": SubResource("Animation_02w1v"),
+&"fade_in": SubResource("Animation_51b0j")
 }
 
-[node name="FlagReachedScreen" type="CanvasLayer"]
+[node name="FlagReachedScreen" type="CanvasLayer" unique_id=1936725170]
 visible = false
 script = ExtResource("1_oet4o")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=863593521]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,8 +75,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1433367302]
 unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_tpu5p")
-}
+libraries/ = SubResource("AnimationLibrary_tpu5p")

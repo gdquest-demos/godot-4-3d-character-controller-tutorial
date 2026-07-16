@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6uew1wfpkt16"]
+[gd_scene format=3 uid="uid://c6uew1wfpkt16"]
 
 [ext_resource type="PackedScene" uid="uid://drkqkt2fp2jca" path="res://level/interactable/flag/flag.glb" id="1_gjsm0"]
-[ext_resource type="Script" path="res://level/interactable/flag/flag_3d.gd" id="2_1g2ow"]
-[ext_resource type="Shader" path="res://level/interactable/flag/goal_flag.gdshader" id="2_pdycc"]
+[ext_resource type="Script" uid="uid://rf645lsi0qjc" path="res://level/interactable/flag/flag_3d.gd" id="2_1g2ow"]
+[ext_resource type="Shader" uid="uid://clvnglubl36h6" path="res://level/interactable/flag/goal_flag.gdshader" id="2_pdycc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfpnh"]
 albedo_color = Color(1, 0.623529, 0.101961, 1)
@@ -15,21 +15,21 @@ shader_parameter/albedo_color = Color(1, 0.435294, 0.0784314, 1)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pbioq"]
 radius = 2.0
 
-[node name="Flag3D" instance=ExtResource("1_gjsm0")]
+[node name="Flag3D" unique_id=755158003 instance=ExtResource("1_gjsm0")]
 script = ExtResource("2_1g2ow")
 
-[node name="GoalBody" parent="." index="0"]
+[node name="GoalBody" parent="." index="0" unique_id=2027906761]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_wfpnh")
 
-[node name="GoalFlag" parent="." index="1"]
+[node name="GoalFlag" parent="." index="1" unique_id=2076085741]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.03, 3.23518, 0)
 material_override = SubResource("ShaderMaterial_jw1k0")
 lod_bias = 10.0
 
-[node name="Area3D" type="Area3D" parent="." index="2"]
+[node name="Area3D" type="Area3D" parent="." index="2" unique_id=1303474207]
 unique_name_in_owner = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=2002737601]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_pbioq")

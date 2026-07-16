@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1ot6gn6tms6h"]
+[gd_scene format=3 uid="uid://b1ot6gn6tms6h"]
 
-[ext_resource type="Script" path="res://lesson_reference/player_3d_template.gd" id="1_dpokc"]
+[ext_resource type="Script" uid="uid://b5ecua1qxlsek" path="res://lesson_reference/player_3d_template.gd" id="1_dpokc"]
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://player/sophia_skin/sophia_skin.tscn" id="2_4dj54"]
 [ext_resource type="AudioStream" uid="uid://bhoyegbjust84" path="res://player/sounds/robot_land.wav" id="3_kbqxf"]
 [ext_resource type="AudioStream" uid="uid://b4x0f4pgfifoo" path="res://player/sounds/robot_jump.wav" id="4_1v0dq"]
@@ -47,21 +47,21 @@ rings = 8
 length = 0.5
 slide_on_slope = true
 
-[node name="Player3DTemplate" type="CharacterBody3D"]
+[node name="Player3DTemplate" type="CharacterBody3D" unique_id=1731636139]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_dpokc")
 acceleration = 30.0
 
-[node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
+[node name="CharacterCollisionShape" type="CollisionShape3D" parent="." unique_id=1218781049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_e8pdu")
 
-[node name="SophiaSkin" parent="." instance=ExtResource("2_4dj54")]
+[node name="SophiaSkin" parent="." unique_id=1416107136 instance=ExtResource("2_4dj54")]
 unique_name_in_owner = true
 
-[node name="DustParticles" type="GPUParticles3D" parent="SophiaSkin"]
+[node name="DustParticles" type="GPUParticles3D" parent="SophiaSkin" unique_id=762458311]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136607, -0.190934)
 cast_shadow = 0
@@ -72,26 +72,26 @@ explosiveness = 0.05
 process_material = SubResource("ParticleProcessMaterial_tqdcj")
 draw_pass_1 = SubResource("SphereMesh_vpbss")
 
-[node name="LandingSound" type="AudioStreamPlayer3D" parent="."]
+[node name="LandingSound" type="AudioStreamPlayer3D" parent="." unique_id=2119373556]
 unique_name_in_owner = true
 stream = ExtResource("3_kbqxf")
 volume_db = 1.0
 
-[node name="JumpSound" type="AudioStreamPlayer3D" parent="."]
+[node name="JumpSound" type="AudioStreamPlayer3D" parent="." unique_id=1978936790]
 unique_name_in_owner = true
 stream = ExtResource("4_1v0dq")
 volume_db = 1.0
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="CameraPivot" type="Node3D" parent="." unique_id=462976641]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09401, 0)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=516728425]
 transform = Transform3D(-1, 2.1052e-08, -1.40279e-07, -3.23484e-08, 0.929023, 0.370022, 1.38112e-07, 0.370022, -0.929023, 0, 0.33984, 0)
 shape = SubResource("SeparationRayShape3D_h1hkf")
 spring_length = 8.0
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=468421520]
 unique_name_in_owner = true
 transform = Transform3D(1, 3.19744e-14, 2.13163e-14, 0, 1, 0, 0, 0, 1, -2.4869e-14, 2.38419e-07, 10)
 current = true

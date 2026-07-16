@@ -1,21 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvt4747kc5u2t"]
+[gd_scene format=3 uid="uid://bvt4747kc5u2t"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_1il7v"]
+[ext_resource type="Script" uid="uid://b1p1lnectvs25" path="res://game.gd" id="1_1il7v"]
 [ext_resource type="PackedScene" uid="uid://b1ot6gn6tms6h" path="res://lesson_reference/player_3d_template.tscn" id="1_w0p8v"]
-[ext_resource type="Script" path="res://addons/free_camera.gd" id="5_5y4mc"]
+[ext_resource type="Script" uid="uid://e477l5rmvo85" path="res://addons/free_camera.gd" id="5_5y4mc"]
 [ext_resource type="PackedScene" uid="uid://cnedxfn2pxh2t" path="res://level/level.tscn" id="7_2frud"]
 [ext_resource type="PackedScene" uid="uid://bxg6oejpaitdt" path="res://level/interactable/flag/flag_reached_screen.tscn" id="19_cpgj4"]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" unique_id=1923663789]
 script = ExtResource("1_1il7v")
 
-[node name="Player3DTemplate" parent="." instance=ExtResource("1_w0p8v")]
+[node name="Player3DTemplate" parent="." unique_id=760306675 instance=ExtResource("1_w0p8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43638, 0, -7.8513)
 
-[node name="FlagReachedScreen" parent="." instance=ExtResource("19_cpgj4")]
+[node name="FlagReachedScreen" parent="." unique_id=1105071696 instance=ExtResource("19_cpgj4")]
 
-[node name="Level" parent="." instance=ExtResource("7_2frud")]
+[node name="Level" parent="." unique_id=730150491 instance=ExtResource("7_2frud")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.4)
 
-[node name="FreelookCamera3D" type="Camera3D" parent="."]
+[node name="FreelookCamera3D" type="Camera3D" parent="." unique_id=2105549810]
 script = ExtResource("5_5y4mc")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnedxfn2pxh2t"]
+[gd_scene format=3 uid="uid://cnedxfn2pxh2t"]
 
 [ext_resource type="Shader" uid="uid://cdlt3ujrpad32" path="res://level/sky_with_stars.tres" id="1_hwp5q"]
 [ext_resource type="PackedScene" uid="uid://7s1esfbldf1" path="res://level/cactus/cactus_small_4.tscn" id="1_oaaa3"]
@@ -32,19 +32,19 @@ cellular_distance_function = 2
 width = 1024
 height = 1024
 generate_mipmaps = false
-seamless = true
-color_ramp = SubResource("Gradient_4p0vt")
 noise = SubResource("FastNoiseLite_jnnrx")
+color_ramp = SubResource("Gradient_4p0vt")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8ud2"]
 shader = ExtResource("1_hwp5q")
 shader_parameter/top_color = Color(0.288469, 0.182916, 1, 1)
 shader_parameter/bottom_color = Color(1, 0.46805, 0, 1)
-shader_parameter/moon_direction = Vector3(-1.095, 0.68, 1)
-shader_parameter/moon_size = 0.045
 shader_parameter/gradient_curve = SubResource("CurveTexture_moxc7")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_83fre")
 shader_parameter/moon_texture = ExtResource("2_kb37w")
+shader_parameter/moon_direction = Vector3(-1.095, 0.68, 1)
+shader_parameter/moon_size = 0.045
 
 [sub_resource type="Sky" id="Sky_0h0bb"]
 sky_material = SubResource("ShaderMaterial_g8ud2")
@@ -78,156 +78,156 @@ volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(0.843137, 0.737255, 0.329412, 1)
 volumetric_fog_emission = Color(0.843137, 0.737255, 0.329412, 1)
 
-[node name="Level" type="Node3D"]
+[node name="Level" type="Node3D" unique_id=757561452]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=274499950]
 environment = SubResource("Environment_5pwhg")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2104308628]
 transform = Transform3D(-0.327016, 0.941731, -0.0787648, 0.688764, 0.294578, 0.662441, 0.647044, 0.162378, -0.744962, -47.2295, 26.8832, -28.0205)
 light_energy = 0.53
 shadow_enabled = true
 directional_shadow_max_distance = 40.0
 
-[node name="KillPlane" parent="." instance=ExtResource("3_1g472")]
+[node name="KillPlane" parent="." unique_id=2065471297 instance=ExtResource("3_1g472")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -55.25, -17.7152, -20)
 
-[node name="Cactus_Small_4" parent="." instance=ExtResource("1_oaaa3")]
+[node name="Cactus_Small_4" parent="." unique_id=1214210811 instance=ExtResource("1_oaaa3")]
 transform = Transform3D(1.97278, -0.330371, -0.0536778, 0.330812, 1.9734, 0.0124367, 0.0508846, -0.0211358, 2.00022, 3.5, 2.2809, -28)
 
-[node name="Cactus_Small_Clump" parent="." instance=ExtResource("2_ba0nm")]
+[node name="Cactus_Small_Clump" parent="." unique_id=1429620920 instance=ExtResource("2_ba0nm")]
 transform = Transform3D(1.32877, 0.0653513, 0.299135, -0.0637557, 1.36203, -0.0143528, -0.299479, -7.56946e-17, 1.3303, 6.32683, 2, -30.0679)
 
-[node name="Cactus_Tall_5" parent="." instance=ExtResource("3_b7ara")]
+[node name="Cactus_Tall_5" parent="." unique_id=1292104025 instance=ExtResource("3_b7ara")]
 transform = Transform3D(1.93396, -0.241928, -2.48772, 0.662063, 2.55211, 0.16876, 2.35812, -0.518119, 1.99287, -1.74479, -0.704929, -33.646)
 
-[node name="Cactus_Tall_6" parent="." instance=ExtResource("4_ej5ku")]
+[node name="Cactus_Tall_6" parent="." unique_id=458240450 instance=ExtResource("4_ej5ku")]
 transform = Transform3D(3.15975, 0.63175, 0.475994, -0.576589, 3.1814, -0.394898, -0.5415, 0.298819, 3.198, -3.24599, 4.81208, -17.3563)
 
-[node name="Cactus_Small_3" parent="." instance=ExtResource("5_ka65c")]
+[node name="Cactus_Small_3" parent="." unique_id=1335698916 instance=ExtResource("5_ka65c")]
 transform = Transform3D(1.96401, -0.124561, -2.16532, 0.142118, 2.92229, -0.0392004, 2.16425, -0.0788595, 1.96757, -15.4438, 8.12897, -17.4614)
 
-[node name="Cactus_Small_2" parent="." instance=ExtResource("6_ona4a")]
+[node name="Cactus_Small_2" parent="." unique_id=2049587940 instance=ExtResource("6_ona4a")]
 transform = Transform3D(2.96971, 0.256071, -1.04621, -0.601084, 2.94019, -0.986561, 0.893765, 1.12651, 2.81273, -14.6582, 8.08741, -16.8441)
 
-[node name="Cactus_Small_5" parent="." instance=ExtResource("6_ona4a")]
+[node name="Cactus_Small_5" parent="." unique_id=688118572 instance=ExtResource("6_ona4a")]
 transform = Transform3D(-2.0693, 0.241202, -1.93468, 0.670546, 2.7372, -0.375951, 1.83073, -0.729927, -2.04911, -14.48, 8.1356, -17.5484)
 
-[node name="Cactus_Small_11" parent="." instance=ExtResource("6_ona4a")]
+[node name="Cactus_Small_11" parent="." unique_id=439529542 instance=ExtResource("6_ona4a")]
 transform = Transform3D(-2.0693, 0.241202, -1.93468, -0.140842, 2.7954, 0.499148, 1.94458, 0.459138, -2.02263, 6.26628, 4.19006, -20.6183)
 
-[node name="CSGPolygon3D8" type="CSGPolygon3D" parent="."]
+[node name="CSGPolygon3D8" type="CSGPolygon3D" parent="." unique_id=800964689]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -48.25, 8, -22)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 3, 2, 3, 0)
 depth = 4.0
 material = ExtResource("7_njuj4")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=620280201]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -55.25, -4.5, -20)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(8, 29, 10)
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=2134867792]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -45.75, -5.5, -20)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(7, 27, 11)
 
-[node name="Flag3D" parent="." instance=ExtResource("8_kebk2")]
+[node name="Flag3D" parent="." unique_id=2101192336 instance=ExtResource("8_kebk2")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -55.25, 10, -20)
 
-[node name="Cactus_Tall_4" parent="." instance=ExtResource("3_b7ara")]
+[node name="Cactus_Tall_4" parent="." unique_id=528048867 instance=ExtResource("3_b7ara")]
 transform = Transform3D(2.61213, -0.568739, 2.70573, 0.733066, 3.73154, 0.0766514, -2.66589, 0.468831, 2.67223, -57.8124, 8.07102, -16.5215)
 
-[node name="Cactus_Small_6" parent="." instance=ExtResource("5_ka65c")]
+[node name="Cactus_Small_6" parent="." unique_id=1150991325 instance=ExtResource("5_ka65c")]
 transform = Transform3D(-0.835645, -0.807971, -3.00138, 0.459363, 3.04172, -0.946727, 3.0741, -0.67416, -0.6744, -58.1859, 10.1568, -24.2418)
 
-[node name="Cactus_Small_10" parent="." instance=ExtResource("5_ka65c")]
+[node name="Cactus_Small_10" parent="." unique_id=1125961043 instance=ExtResource("5_ka65c")]
 transform = Transform3D(-0.343258, 0.118638, -2.12375, -0.220623, 1.66642, 0.18614, 2.19645, 0.185923, -0.313194, -41.9811, 8.26512, -17.7959)
 
-[node name="Cactus_Small_7" parent="." instance=ExtResource("6_ona4a")]
+[node name="Cactus_Small_7" parent="." unique_id=1282493031 instance=ExtResource("6_ona4a")]
 transform = Transform3D(1.41309, -0.625184, -3.11244, -0.316167, 3.3622, -0.818895, 3.15882, 0.616194, 1.31036, -58.1225, 10.3795, -23.1583)
 
-[node name="Cactus_Small_8" parent="." instance=ExtResource("6_ona4a")]
+[node name="Cactus_Small_8" parent="." unique_id=201906830 instance=ExtResource("6_ona4a")]
 transform = Transform3D(-3.02021, 0.729762, 0.355604, 0.681151, 3.02339, -0.419376, -0.441628, -0.327551, -3.07869, -57.2293, 10.276, -23.5882)
 
-[node name="Cactus_Small_9" parent="." instance=ExtResource("6_ona4a")]
+[node name="Cactus_Small_9" parent="." unique_id=3420942 instance=ExtResource("6_ona4a")]
 transform = Transform3D(-2.99633, 0.231602, -1.56352, 0.381736, 3.35793, -0.234152, 1.5338, -0.383288, -2.99613, -47.7949, 8.42468, -22.8013)
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=1557976714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 7.5, -20)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(5, 1, 8)
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="."]
+[node name="CSGBox3D11" type="CSGBox3D" parent="." unique_id=6820905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 7.5, -20)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(5, 1, 8)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1813540362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -9.5, -31)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(10, 19, 22)
 
-[node name="Cactus_Tall_3" parent="." instance=ExtResource("3_b7ara")]
+[node name="Cactus_Tall_3" parent="." unique_id=1873673308 instance=ExtResource("3_b7ara")]
 transform = Transform3D(-0.363066, -0.101082, 3.01856, -0.727051, 2.95381, 0.0114629, -2.93144, -0.720079, -0.376708, -16.8351, 6.30984, -22.6841)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=564099930]
 material_override = ExtResource("7_njuj4")
 use_collision = true
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1939261064]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -6.5, -20)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(12, 25, 8)
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=513453603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -5.5, -20)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(6, 27, 8)
 
-[node name="CSGPolygon3D9" type="CSGPolygon3D" parent="CSGCombiner3D"]
+[node name="CSGPolygon3D9" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=506652388]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -9, 6, -22)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 3, 2, 3, 0)
 depth = 4.0
 material = ExtResource("7_njuj4")
 
-[node name="CSGCombiner" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner" type="CSGCombiner3D" parent="." unique_id=797454917]
 material_override = ExtResource("7_njuj4")
 use_collision = true
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner" unique_id=1608735123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, -22)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(7, 4, 4)
 
-[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="CSGCombiner"]
+[node name="CSGPolygon3D7" type="CSGPolygon3D" parent="CSGCombiner" unique_id=574917211]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3, 4, -24)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 3, 2, 3, 0)
 depth = 4.0
 material = ExtResource("7_njuj4")
 
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=930973286]
 material_override = ExtResource("7_njuj4")
 use_collision = true
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D2"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D2" unique_id=973902079]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -29)
 material_override = ExtResource("7_njuj4")
 use_collision = true
 size = Vector3(4, 2, 4)
 
-[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGCombiner3D2"]
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGCombiner3D2" unique_id=1997294205]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -34)
 use_collision = true
 polygon = PackedVector2Array(0, 0, 3, 2, 3, 0)

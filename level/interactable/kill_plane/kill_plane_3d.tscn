@@ -1,13 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bij84ol81kcts"]
+[gd_scene format=3 uid="uid://bij84ol81kcts"]
 
-[ext_resource type="Script" path="res://level/interactable/kill_plane/kill_plane_3d.gd" id="1_a6gaa"]
+[ext_resource type="Script" uid="uid://bp7o7w7wjk1r3" path="res://level/interactable/kill_plane/kill_plane_3d.gd" id="1_a6gaa"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_bfwmc"]
 
-[node name="KillPlane3D" type="Area3D"]
+[node name="KillPlane3D" type="Area3D" unique_id=693922175]
 collision_layer = 2
 monitorable = false
 script = ExtResource("1_a6gaa")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1794887161]
 shape = SubResource("WorldBoundaryShape3D_bfwmc")
