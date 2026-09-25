@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 	_camera_pivot_target_rotation.x += _camera_input_direction.y
 	_camera_pivot_target_rotation.x = clamp(_camera_pivot_target_rotation.x, tilt_lower_limit, tilt_upper_limit)
 	_camera_pivot_target_rotation.y += _camera_input_direction.x
-	_camera_pivot.rotation = _camera_pivot_target_rotation.lerp(_camera_pivot.rotation, 10.0 * delta)
+	_camera_pivot.rotation = _camera_pivot.rotation.lerp( _camera_pivot_target_rotation, 10.0 * delta)
 
 	_camera_input_direction = Vector2.ZERO
 
