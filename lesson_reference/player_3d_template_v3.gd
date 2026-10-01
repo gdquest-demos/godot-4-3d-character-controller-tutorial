@@ -16,7 +16,7 @@ extends CharacterBody3D
 @export var stopping_speed := 1.0
 
 @export_group("Camera")
-@export_range(0.0, 1.0) var mouse_sensitivity := 0.005
+@export_range(0.0, 1.0) var mouse_sensitivity := 0.003
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 8.0
 
@@ -68,22 +68,43 @@ func _unhandled_input(event: InputEvent) -> void:
 		event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 	)
 	if player_is_using_mouse:
-		_camera_input_direction.x = -event.relative.x * mouse_sensitivity
-		_camera_input_direction.y = -event.relative.y * mouse_sensitivity
+		_camera_input_direction.x = -event.screen_relative.x * mouse_sensitivity
+		_camera_input_direction.y = -event.screen_relative.y * mouse_sensitivity
 
+
+# In this version, instead of directly moving the camera pivot, we set a target rotation and interpolate to it.
+# This variable stores the target rotation.
 @onready var _camera_pivot_target_rotation := _camera_pivot.rotation
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
+	# Every frame we use the mouse input to turn the target rotation.
+	# It's almost the same code we used before to turn the camera pivot directly,
+	# but we just store that value in a variable instead.
 	_camera_pivot_target_rotation.x += _camera_input_direction.y
 	_camera_pivot_target_rotation.x = clamp(_camera_pivot_target_rotation.x, tilt_lower_limit, tilt_upper_limit)
 	_camera_pivot_target_rotation.y += _camera_input_direction.x
-	_camera_pivot.rotation = _camera_pivot_target_rotation.lerp(_camera_pivot.rotation, 10.0 * delta)
-
 	_camera_input_direction = Vector2.ZERO
 
-	# Calculate movement input and align it to the camera's direction.
+	# This prevents the camera Y rotation from accumulating too much. It's more
+	# of a detail but if you want to lerp the camera to a specific direction or
+	# control it in a cutscene, without this, the camera could unwind
+	# accumulated turns abruptly.
+	if absf(_camera_pivot_target_rotation.y) > TAU:
+		var rotation_offset := roundi(_camera_pivot_target_rotation.y / TAU) * TAU
+		_camera_pivot_target_rotation.y -= rotation_offset
+		_camera_pivot.rotation.y -= rotation_offset
+
+	# Little addition compared to the original: this formula makes interpolation framerate-independent.
+	var weight := 1.0 - exp(-10.0 * delta)
+	_camera_pivot.rotation = _camera_pivot.rotation.lerp(_camera_pivot_target_rotation, weight)
+
+	var target_angle := Vector3.BACK.signed_angle_to(_last_input_direction, Vector3.UP)
+	_skin.rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
+
+
+# This doesn't change except for camera and skin code that moves to _process().
+func _physics_process(delta: float) -> void:
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down", 0.4)
-	# Should be projected onto the ground plane.
 	var forward := _camera.global_basis.z
 	var right := _camera.global_basis.x
 	var move_direction := forward * raw_input.y + right * raw_input.x
@@ -95,8 +116,6 @@ func _physics_process(delta: float) -> void:
 	# direction for the rotation basis.
 	if move_direction.length() > 0.2:
 		_last_input_direction = move_direction.normalized()
-	var target_angle := Vector3.BACK.signed_angle_to(_last_input_direction, Vector3.UP)
-	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
 
 	# We separate out the y velocity to only interpolate the velocity in the
 	# ground plane, and not affect the gravity.
