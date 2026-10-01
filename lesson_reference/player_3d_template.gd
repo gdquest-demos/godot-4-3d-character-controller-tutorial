@@ -16,7 +16,7 @@ extends CharacterBody3D
 @export var stopping_speed := 1.0
 
 @export_group("Camera")
-@export_range(0.0, 1.0) var mouse_sensitivity := 0.005
+@export_range(0.0, 1.0) var mouse_sensitivity := 0.25
 @export var tilt_upper_limit := PI / 3.0
 @export var tilt_lower_limit := -PI / 8.0
 
@@ -71,13 +71,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_input_direction.x = -event.relative.x * mouse_sensitivity
 		_camera_input_direction.y = -event.relative.y * mouse_sensitivity
 
-@onready var _camera_pivot_target_rotation := _camera_pivot.rotation
 
 func _physics_process(delta: float) -> void:
-	_camera_pivot_target_rotation.x += _camera_input_direction.y
-	_camera_pivot_target_rotation.x = clamp(_camera_pivot_target_rotation.x, tilt_lower_limit, tilt_upper_limit)
-	_camera_pivot_target_rotation.y += _camera_input_direction.x
-	_camera_pivot.rotation = _camera_pivot_target_rotation.lerp(_camera_pivot.rotation, 10.0 * delta)
+	_camera_pivot.rotation.x += _camera_input_direction.y * delta
+	_camera_pivot.rotation.x = clamp(_camera_pivot.rotation.x, tilt_lower_limit, tilt_upper_limit)
+	_camera_pivot.rotation.y += _camera_input_direction.x * delta
 
 	_camera_input_direction = Vector2.ZERO
 
